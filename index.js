@@ -1,12 +1,18 @@
 //API
-const urlBase = 'https://ocampo-dev.wicode.com.mx/api/v1/apoyo';
+const urlBase = 'https://ocampo-dev.wicode.com.mx/api/v1/apoyos';
 
 //Botón
+const button_get = document.querySelector('#get');
+
+//div para ver la información
+const content = document.querySelector('.content');
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    button_get.onclick = () => {
+        getApoyosAsync();
+    }
 
-    
 
     //Peticiones ejemplos
     //-----------------------------------------------------
@@ -17,6 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //deleteApoyoAsync()
 
 });
+
+const getApoyosAsync = async () => {
+    const response = await fetch(urlBase); // GET
+    const json = await response.json();
+    console.log(json);
+    console.log("Hola mundo");
+}
 
 //Peticiones ejemplos
 /*----------------------------------------------------------

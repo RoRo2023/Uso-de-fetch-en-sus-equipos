@@ -8,7 +8,58 @@
 </head>
 <body>
     <button id="get">consultar</button>
-    <div class="content"></div>
+    <button id="limpiar">Limpiar tabla</button>
+    <div class="content">
+        <h4>Listado de Apoyos</h4>
+        <table class="default">
+            <tr>          
+              <th>Nombre</th>          
+              <th>Descripcion</th>          
+              <th>Fecha</th>              
+              <th>Lugar</th>              
+              <th>Estatus</th>
+              <th>Monto</th>
+            </tr>
+            <tbody id="tabApoyo">
+
+            </tbody>       
+          
+          </table>
+    </div>
+    <h4>Agregar Nuevo Apoyo</h4>
+    <form id="#formulario" action="" method="post">
+        <ul>
+         <li>
+           <label for="name">Nombre:</label>
+           <input type="text" id="nombre">
+         </li>
+         <li>
+           <label for="mail">Descripcion:</label>
+           <input type="email" id="descripcion">
+         </li>
+         <li>
+            <label for="name">Fecha:</label>
+            <input type="text" id="fecha">
+          </li>          
+          <li>
+            <label for="name">Lugar:</label>
+            <input type="text" id="lugar">
+          </li>
+          <li>
+            <label for="name">Perioricidad:</label>
+            <input type="text" id="period">
+          </li>
+          <li>
+            <label for="name">Monto:</label>
+            <input type="text" id="monto">
+          </li>
+          <li>
+            <label for="name">Dependencia:</label>
+            <input type="text" id="dependencia">
+          </li>          
+        </ul>
+        <button id="btn-add">Agregar</button>
+       </form>
     <script src="./index.js"></script>
 </body>
 </html>

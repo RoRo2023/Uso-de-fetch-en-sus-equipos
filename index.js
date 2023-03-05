@@ -3,6 +3,19 @@ const urlBase = 'https://ocampo-dev.wicode.com.mx/api/v1/apoyos';
 
 //Botón
 const button_get = document.querySelector('#get');
+const agregar = document.querySelector('#btn-add');
+const formulario = document.querySelector('#formulario');
+const limpiaform = document.querySelector('#limpiar');
+const bodytab = document.querySelector('#tabApoyo');
+
+//Inputs
+const nom = document.querySelector('#nombre');
+const des = document.querySelector('#descripcion');
+const fec = document.querySelector('#fecha');
+const lug = document.querySelector('#lugar');
+const per = document.querySelector('#period');
+const mon = document.querySelector('#monto');
+const dep = document.querySelector('#dependencia');
 
 //div para ver la información
 const content = document.querySelector('.content');
@@ -11,6 +24,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     button_get.onclick = () => {
         getApoyosAsync();
+    }
+    limpiaform.onclick = () => {
+        document.querySelector("tbody").innerHTML = '';
+    }
+    agregar.onclick = () => {
+       const nombre = nom.value;
+       const descripcion = des.value;
+       const fecha = fec.value;
+       const lugar = lug.value;
+       const monto = mon.value;
+       const periodicidad = per.value;
+       const dependencia = dep.value;
+       const apoyo = {
+        nombre,
+        descripcion,
+        fecha,
+        lugar,
+        monto,
+        periodicidad,
+        dependencia
+       }
+       console.log("apoyo", apoyo);
     }
 
 
@@ -27,6 +62,19 @@ document.addEventListener('DOMContentLoaded', () => {
 const getApoyosAsync = async () => {
     const response = await fetch(urlBase); // GET
     const json = await response.json();
+    const njson = json.data.apoyos;
+    for (let i = 0; i < njson.length; i++){
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${njson[i].nombre}</td>
+        <td>${njson[i].descripcion}</td>
+        <td>${njson[i].fecha}</td>
+        <td>${njson[i].lugar}</td>        
+        <td>${njson[i].estatus}</td>
+        <td>${njson[i].monto}</td>        
+        `;
+        document.querySelector("tbody").appendChild(row);
+    }
     console.log(json);
     console.log("Hola mundo");
 }

@@ -63,25 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-const getApoyosAsync = async () => {
-    const response = await fetch(urlBase); // GET
-    const json = await response.json();
-    const njson = json.data.apoyos;
-    for (let i = 0; i < njson.length; i++){
-        const row = document.createElement('tr');
-        row.innerHTML = `
-        <td>${njson[i].nombre}</td>
-        <td>${njson[i].descripcion}</td>
-        <td>${njson[i].fecha}</td>
-        <td>${njson[i].lugar}</td>        
-        <td>${njson[i].estatus}</td>
-        <td>${njson[i].monto}</td>        
-        `;
-        document.querySelector("tbody").appendChild(row);
-    }
-    console.log(json);
-    console.log("Hola mundo");
-}
+
 const getApoyosAsync = async () => {
     const response = await fetch(urlBase); // GET
     const json = await response.json();

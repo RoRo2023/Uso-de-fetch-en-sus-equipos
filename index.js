@@ -28,8 +28,28 @@ document.addEventListener('DOMContentLoaded', () => {
     limpiaform.onclick = () => {
         document.querySelector("tbody").innerHTML = '';
     }
-   agregar.onclick = () => {
-        createApoyoAsync();
+    agregar.onclick = () => {
+       const nombre = nom.value;
+       const descripcion = des.value;
+       const fecha = fec.value;
+       const lugar = lug.value;
+       const monto = mon.value;
+       const periodicidad = per.value;
+       const tipo_Dependencia = dep.value;
+       const imagen = "https://firebasestorage.googleapis.com/v0/b/ocampo-app.appspot.com/o/Dependence1-1677256359436?alt=media&token=06362994-5d5f-4423-9bad-97631b91e7e9";
+       const activo = true;
+       const apoyo = {
+        nombre,
+        descripcion,
+        fecha,
+        imagen,
+        lugar,
+        activo,
+        monto,
+        periodicidad,
+        tipo_Dependencia
+       }
+       console.log("apoyo", apoyo);
     }
 
 

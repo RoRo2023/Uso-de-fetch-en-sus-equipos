@@ -20,6 +20,8 @@ const dep = document.querySelector('#dependencia');
 //div para ver la información
 const content = document.querySelector('.content');
 
+//formulario.addEventListener('submit', createApoyoAsync)
+
 document.addEventListener('DOMContentLoaded', () => {
 
     button_get.onclick = () => {
@@ -29,27 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector("tbody").innerHTML = '';
     }
     agregar.onclick = () => {
-       const nombre = nom.value;
-       const descripcion = des.value;
-       const fecha = fec.value;
-       const lugar = lug.value;
-       const monto = mon.value;
-       const periodicidad = per.value;
-       const tipo_Dependencia = dep.value;
-       const imagen = "https://firebasestorage.googleapis.com/v0/b/ocampo-app.appspot.com/o/Dependence1-1677256359436?alt=media&token=06362994-5d5f-4423-9bad-97631b91e7e9";
-       const activo = true;
-       const apoyo = {
-        nombre,
-        descripcion,
-        fecha,
-        imagen,
-        lugar,
-        activo,
-        monto,
-        periodicidad,
-        tipo_Dependencia
-       }
-       console.log("apoyo", apoyo);
+       createApoyoAsync();
     }
 
 
@@ -86,6 +68,32 @@ const getApoyosAsync = async () => {
     console.log(json);
     console.log("Hola mundo");
 }
+
+async function createApoyoAsync(event) {
+    event.preventDefault()
+    const config = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nombre: nom.value,
+            descripcion: des.value,
+            fecha: fec.value,
+            imagen: "https://firebasestorage.googleapis.com/v0/b/ocampo-app.appspot.com/o/Dependence1-1677256359436?alt=media&token=06362994-5d5f-4423-9bad-97631b91e7e9",
+            lugar: lug.value,
+            activo: true,
+            periodicidad: per.value,
+            monto: mon.value,
+            tipo_Dependencia: dep.value
+        })
+    }
+    const response = await fetch(urlBase, config);
+    const json = await response.json();
+    EventTarget.preventDefault();
+    console.log(json);
+}
+
 
 //Peticiones ejemplos
 /*----------------------------------------------------------

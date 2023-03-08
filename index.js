@@ -35,15 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
        const lugar = lug.value;
        const monto = mon.value;
        const periodicidad = per.value;
-       const dependencia = dep.value;
+       const tipo_Dependencia = dep.value;
+       const imagen = "https://firebasestorage.googleapis.com/v0/b/ocampo-app.appspot.com/o/Dependence1-1677256359436?alt=media&token=06362994-5d5f-4423-9bad-97631b91e7e9";
+       const activo = true;
        const apoyo = {
         nombre,
         descripcion,
         fecha,
+        imagen,
         lugar,
+        activo,
         monto,
         periodicidad,
-        dependencia
+        tipo_Dependencia
        }
        console.log("apoyo", apoyo);
     }
@@ -78,6 +82,28 @@ const getApoyosAsync = async () => {
     console.log(json);
     console.log("Hola mundo");
 }
+const getApoyosAsync = async () => {
+    const response = await fetch(urlBase); // GET
+    const json = await response.json();
+    const njson = json.data.apoyos;
+    for (let i = 0; i < njson.length; i++){
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${njson[i].nombre}</td>
+        <td>${njson[i].descripcion}</td>
+        <td>${njson[i].fecha}</tpd>
+        <td>${njson[i].lugar}</td>        
+        <td>${njson[i].estatus}</td>
+        <td>${njson[i].monto}</td>
+        <td><button type="button" id="eliminar" value="${njson[i].id}">
+        Eliminar
+        </button></td>        
+        `;
+        document.querySelector("tbody").appendChild(row);
+    }
+    console.log(json);
+    console.log("Hola mundo");
+}
 
 //Peticiones ejemplos
 /*----------------------------------------------------------
@@ -97,28 +123,6 @@ const getApoyosAsync = async () => {
     console.log("Hola mundo");
 }
 
-// Peticiones POST/CREATE
-const createApoyoAsync = async () => {
-    const response = await fetch(urlBase, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            nombre: "Beca para el estudio",
-            descripcion: "Apoyar a alumnos con un promedio de 8.5 en adelante",
-            fecha: new Date(),
-            imagen: "https://firebasestorage.googleapis.com/v0/b/ocampo-app.appspot.com/o/Dependence1-1677256359436?alt=media&token=06362994-5d5f-4423-9bad-97631b91e7e9",
-            lugar: "Plaza de la ciudad",
-            activo: true,
-            periodicidad: "Mensualmente",
-            monto: "3000",
-            tipo_Dependencia: "Desarrollo económico"
-        })
-    });
-    const json = await response.json();
-    console.log(json);
-}
 
 // Peticiones PUT/UPDATE penditente
 const updateApoyoAsync = async () => {

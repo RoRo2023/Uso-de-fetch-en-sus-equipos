@@ -2,8 +2,8 @@
 Tarea semanal
 
 Integrantes:
-Jesus Antonio Gutierrez
-Miguel Corona
-Edwin Mauricio Castañeda
-Mario Diaz
+Jesus Antonio Gutierrez, 
+Miguel Corona, 
+Edwin Mauricio Castañeda, 
+Mario Diaz, 
 Rodrigo Quintanar

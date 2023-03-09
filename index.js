@@ -18,14 +18,16 @@ const mon = document.querySelector('#monto');
 const dep = document.querySelector('#dependencia');
 
 //div para ver la información
-const content = document.querySelector('.content');
+//const content = document.querySelector('.content');
 
 //formulario.addEventListener('submit', createApoyoAsync)
 
-document.addEventListener('DOMContentLoaded', () => {
 
+document.addEventListener('DOMContentLoaded', () => {
+    
     button_get.onclick = () => {
         getApoyosAsync();
+      
     }
     limpiaform.onclick = () => {
         document.querySelector("tbody").innerHTML = '';
@@ -47,9 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 const getApoyosAsync = async () => {
+    alert(urlBase)
     const response = await fetch(urlBase); // GET
+    
     const json = await response.json();
     const njson = json.data.apoyos;
+    
+   
+
     for (let i = 0; i < njson.length; i++){
         const row = document.createElement('tr');
         row.innerHTML = `

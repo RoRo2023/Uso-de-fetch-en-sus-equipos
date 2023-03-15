@@ -1,5 +1,6 @@
 //API
-const urlBase = 'https://ocampo-dev.wicode.com.mx/api/v1/apoyos';
+const urlBase = 'http://13.56.7.193:3001/api/v1/apoyos';
+
 
 //Botón
 const button_get = document.querySelector('#get');
@@ -18,14 +19,16 @@ const mon = document.querySelector('#monto');
 const dep = document.querySelector('#dependencia');
 
 //div para ver la información
-const content = document.querySelector('.content');
+//const content = document.querySelector('.content');
 
 //formulario.addEventListener('submit', createApoyoAsync)
 
-document.addEventListener('DOMContentLoaded', () => {
 
+document.addEventListener('DOMContentLoaded', () => {
+    
     button_get.onclick = () => {
         getApoyosAsync();
+      
     }
     limpiaform.onclick = () => {
         document.querySelector("tbody").innerHTML = '';
@@ -50,6 +53,9 @@ const getApoyosAsync = async () => {
     const response = await fetch(urlBase); // GET
     const json = await response.json();
     const njson = json.data.apoyos;
+    
+   
+
     for (let i = 0; i < njson.length; i++){
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -69,18 +75,18 @@ const getApoyosAsync = async () => {
     console.log("Hola mundo");
 }
 
-async function createApoyoAsync(event) {
+async function createApoyoAsync(event) {    
     event.preventDefault()
     const config = {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
-        },
+        },   
         body: JSON.stringify({
             nombre: nom.value,
             descripcion: des.value,
             fecha: fec.value,
-            imagen: "https://firebasestorage.googleapis.com/v0/b/ocampo-app.appspot.com/o/Dependence1-1677256359436?alt=media&token=06362994-5d5f-4423-9bad-97631b91e7e9",
+            imagen: "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA18Cl0n.img?w=800&h=415&q=60&m=2&f=jpg",
             lugar: lug.value,
             activo: true,
             periodicidad: per.value,
@@ -88,10 +94,12 @@ async function createApoyoAsync(event) {
             tipo_Dependencia: dep.value
         })
     }
+  
     const response = await fetch(urlBase, config);
     const json = await response.json();
     EventTarget.preventDefault();
     console.log(json);
+
 }
 
 

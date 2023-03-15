@@ -1,5 +1,5 @@
 //API
-const urlBase = 'https://ocampo-dev.wicode.com.mx/api/v1/apoyos';
+const urlBase = 'http://13.56.7.193:3001/api/v1/apoyos';
 
 //Botón
 const button_get = document.querySelector('#get');
@@ -49,9 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 const getApoyosAsync = async () => {
-    alert(urlBase)
     const response = await fetch(urlBase); // GET
-    
     const json = await response.json();
     const njson = json.data.apoyos;
     
@@ -77,17 +75,19 @@ const getApoyosAsync = async () => {
 }
 
 async function createApoyoAsync(event) {
+    alert("si entra")
     event.preventDefault()
+    alert("si entra2")
     const config = {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
-        },
+        },   
         body: JSON.stringify({
             nombre: nom.value,
             descripcion: des.value,
             fecha: fec.value,
-            imagen: "https://firebasestorage.googleapis.com/v0/b/ocampo-app.appspot.com/o/Dependence1-1677256359436?alt=media&token=06362994-5d5f-4423-9bad-97631b91e7e9",
+            imagen: "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA18Cl0n.img?w=800&h=415&q=60&m=2&f=jpg",
             lugar: lug.value,
             activo: true,
             periodicidad: per.value,
@@ -95,10 +95,12 @@ async function createApoyoAsync(event) {
             tipo_Dependencia: dep.value
         })
     }
+  
     const response = await fetch(urlBase, config);
     const json = await response.json();
     EventTarget.preventDefault();
     console.log(json);
+
 }
 
 

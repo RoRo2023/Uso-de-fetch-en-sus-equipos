@@ -1,6 +1,7 @@
 //API
 const urlBase = 'http://13.56.7.193:3001/api/v1/apoyos';
 
+
 //Botón
 const button_get = document.querySelector('#get');
 const agregar = document.querySelector('#btn-add');
@@ -74,10 +75,8 @@ const getApoyosAsync = async () => {
     console.log("Hola mundo");
 }
 
-async function createApoyoAsync(event) {
-    alert("si entra")
+async function createApoyoAsync(event) {    
     event.preventDefault()
-    alert("si entra2")
     const config = {
         method: "POST",
         headers: {

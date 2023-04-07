@@ -1,9 +1,11 @@
 # Uso-de-fetch-en-sus-equipos
 
-##DENTRO DE LA TAREA SE SOLICITO DOS FUNCIONES LAS CUALES FUERON GET Y POST
+## DENTRO DE LA TAREA, SE SOLICITO DOS FUNCIONES, LAS CUALES FUERON GET Y POST
 
 La página tiene la siguiente vista:
+
 ![image](https://user-images.githubusercontent.com/118942603/230659049-33a68b3b-b493-4689-a763-beabce123c75.png)
+
 De la cual continene 3 botones:
 
 ![image](https://user-images.githubusercontent.com/118942603/230659191-da3f1d77-5130-4b16-9815-0aba341aab10.png)
@@ -19,9 +21,9 @@ Este botón permitirá agregar nuevos registros.
 
 Tarea semanal
 
-###Integrantes:
-#####Jesus Antonio Gutierrez, 
-#####Miguel Corona, 
-#####Edwin Mauricio Castañeda, 
-#####Mario Diaz, 
-#####Rodrigo Quintanar
+### Integrantes:
+##### Jesus Antonio Gutierrez, 
+##### Miguel Corona, 
+##### Edwin Mauricio Castañeda, 
+##### Mario Diaz, 
+##### Rodrigo Quintanar

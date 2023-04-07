@@ -14,7 +14,7 @@ const nom = document.querySelector('#nombre');
 const des = document.querySelector('#descripcion');
 const fec = document.querySelector('#fecha');
 const lug = document.querySelector('#lugar');
-const per = document.querySelector('#period');
+const per = document.querySelector('#periodo');
 const mon = document.querySelector('#monto');
 const dep = document.querySelector('#dependencia');
 
@@ -25,7 +25,7 @@ const dep = document.querySelector('#dependencia');
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+   
     button_get.onclick = () => {
         getApoyosAsync();
       
@@ -34,17 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector("tbody").innerHTML = '';
     }
     agregar.onclick = () => {
+        
        createApoyoAsync();
+   
     }
-
-
-    //Peticiones ejemplos
-    //-----------------------------------------------------
-    //getApoyosSync();
-    //getApoyosAsync();
-    //createApoyoAsync();
-    // pendiente - updateApoyoAsync();
-    //deleteApoyoAsync()
 
 });
 
@@ -53,8 +46,6 @@ const getApoyosAsync = async () => {
     const response = await fetch(urlBase); // GET
     const json = await response.json();
     const njson = json.data.apoyos;
-    
-   
 
     for (let i = 0; i < njson.length; i++){
         const row = document.createElement('tr');
@@ -71,17 +62,43 @@ const getApoyosAsync = async () => {
         `;
         document.querySelector("tbody").appendChild(row);
     }
-    console.log(json);
-    console.log("Hola mundo");
+   /* console.log(json);
+    console.log("Hola mundo");*/
 }
+/* codigo del profe
+const createApoyoAsync = async () => {
 
-async function createApoyoAsync(event) {    
-    event.preventDefault()
-    const config = {
+    
+  
+    const response = await fetch(urlBase, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
-        },   
+        },
+        body: JSON.stringify({
+            nombre: "dddddddddddddddddddddddddddddddd",
+            descripcion: "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            fecha: new Date(),
+            imagen: "https://firebasestorage.googleapis.com/v0/b/ocampo-app.appspot.com/o/Dependence1-1677256359436?alt=media&token=06362994-5d5f-4423-9bad-97631b91e7e9",
+            lugar: "Plaza de la ciudad",
+            activo: true,
+            periodicidad: "Mensualmente",
+            monto: "3000",
+            tipo_Dependencia: "Desarrollo económico"
+        })
+    });
+    const json = await response.json();
+   
+    console.log(json);
+}*/
+
+async function createApoyoAsync() {    
+   // event.preventDefault()
+    const response = await fetch(urlBase, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },  
         body: JSON.stringify({
             nombre: nom.value,
             descripcion: des.value,
@@ -93,15 +110,22 @@ async function createApoyoAsync(event) {
             monto: mon.value,
             tipo_Dependencia: dep.value
         })
-    }
-  
-    const response = await fetch(urlBase, config);
+    });
     const json = await response.json();
-    EventTarget.preventDefault();
+   
     console.log(json);
-
+   alert("Se han agregado los datos correctamente")
+nom.value=""
+   des.value=""
+   fec.value=""
+   lug.value=""
+   true,
+   per.value=""
+   mon.value=""
+   dep.value=""
 }
 
+ 
 
 //Peticiones ejemplos
 /*----------------------------------------------------------
